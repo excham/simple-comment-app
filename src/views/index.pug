@@ -1,0 +1,34 @@
+html
+  head
+    title Hello
+    link(href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css", rel="stylesheet")
+  body
+    div(style="width: 800px;").container
+      h1.title.is-1 Simple comment app
+      p Write a new comment:
+
+      form(action="/comment", method="post")
+        div.field
+          textarea(name="comment", placeholder="Enter a comment").textarea
+        div.field
+          input(name="name", placeholder="Enter your name").input
+        div.field
+          button(type="submit").button Submit
+
+      p Comment from server:&nbsp;
+        b=server
+
+      hr
+
+      - for(var i = 0; i < comments.length; i++)
+        div.card
+          div.card-content
+            span= comments[i].comment
+            br
+            span  &horbar;&nbsp;
+              =comments[i].name
+              |  from&nbsp;
+              =comments[i].server
+
+        br
+        br
